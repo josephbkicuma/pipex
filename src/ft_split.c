@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kicuma <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 23:47:51 by kicuma            #+#    #+#             */
-/*   Updated: 2024/07/31 07:41:35 by kicuma           ###   ########.fr       */
+/*   Updated: 2024/08/03 14:39:02 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/pipex.h"
 
 size_t	count_words(const char *s, char c)
 {

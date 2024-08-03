@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/03 14:08:56 by jquicuma          #+#    #+#             */
-/*   Updated: 2024/08/03 14:41:52 by jquicuma         ###   ########.fr       */
+/*   Created: 2024/08/03 14:40:20 by jquicuma          #+#    #+#             */
+/*   Updated: 2024/08/03 14:48:39 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "../includes/pipex.h"
 
-# include <fcntl.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <wait.h>
-//Temporary include 
-# include <stdio.h>
+size_t	ft_strlen(const char *str)
+{
+	size_t i;
 
-size_t  ft_strlen(const char *str);
-char    **ft_split(const char *s, char c);
-char    *ft_strjoin(const char *s1, const char *s2);
-
-#endif
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
