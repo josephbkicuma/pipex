@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 14:08:56 by jquicuma          #+#    #+#             */
-/*   Updated: 2024/08/04 01:38:41 by jquicuma         ###   ########.fr       */
+/*   Updated: 2024/08/04 03:02:59 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <wait.h>
+# include <stdio.h>
 
 # ifndef STD_ERR
 #  define STD_ERR

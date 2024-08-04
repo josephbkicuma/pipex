@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 14:08:56 by jquicuma          #+#    #+#             */
-/*   Updated: 2024/08/04 01:38:32 by jquicuma         ###   ########.fr       */
+/*   Updated: 2024/08/04 05:30:07 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ int	exec_cmd(char *comand)
 	return (0);
 }
 
-int	filein(char *output_file, char *comand, int pipe_fd[2])
+int	filein(char *input_file, char *comand, int pipe_fd[2])
 {
 	int	fd;
 
 	close(pipe_fd[0]);
-	fd = open(output_file, O_WRONLY, 0644);
+	fd = open(input_file, O_RDONLY, 0644);
 	if (fd == -1)
 	{
 		perror("open");
@@ -59,12 +59,12 @@ int	filein(char *output_file, char *comand, int pipe_fd[2])
 	return (0);
 }
 
-int	fileout(char *input_file, char *comand, int pipe_fd[2])
+int	fileout(char *output_file, char *comand, int pipe_fd[2])
 {
 	int	fd;
 
 	close(pipe_fd[1]);
-	fd = open(input_file, O_RDWR | O_CREAT | O_TRUNC, 0777);
+	fd = open(output_file, O_RDWR | O_CREAT | O_TRUNC, 0777);
 	if (fd == -1)
 	{
 		perror("open");
