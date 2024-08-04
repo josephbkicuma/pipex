@@ -54,3 +54,9 @@ dkms.conf
 # my
 file*
 pipex
+obj/
+./obj/
+obj
+*.o
+infile
+outfile
