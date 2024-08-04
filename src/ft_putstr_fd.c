@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/03 14:08:56 by jquicuma          #+#    #+#             */
-/*   Updated: 2024/08/04 01:38:25 by jquicuma         ###   ########.fr       */
+/*   Created: 2024/08/04 01:24:36 by jquicuma          #+#    #+#             */
+/*   Updated: 2024/08/04 01:39:42 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+int	ft_putstr_fd(char *str, int fd)
 {
-	char	*joined;
-	char	*ret;
+	int	i;
 
-	joined = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!joined)
-		return (NULL);
-	if (!s1 || !s2)
-		return (NULL);
-	ret = joined;
-	while (*s1)
-		*joined++ = *s1++;
-	while (*s2)
-		*joined++ = *s2++;
-	*joined = '\0';
-	return (ret);
+	i = -1;
+	while (str[++i])
+		write(fd, &str[i], 1);
+	return (i);
 }

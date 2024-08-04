@@ -5,25 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/28 10:42:10 by codespace         #+#    #+#             */
-/*   Updated: 2024/08/03 15:31:39 by jquicuma         ###   ########.fr       */
+/*   Created: 2024/08/03 14:08:56 by jquicuma          #+#    #+#             */
+/*   Updated: 2024/08/04 01:38:32 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-void    free_arr(char **argv)
+void	free_arr(char **arr)
 {
-    size_t  i;
+	char	**temp;
 
-    i = -1;
-    while (argv[++i])
-        free(argv[i]);
-    free(argv);
-    argv = NULL;
+	temp = arr;
+	if (temp && *temp)
+		while (*temp)
+			free(*temp++);
+	free(arr);
 }
 
-void	exec_cmd(char *comand)
+int	exec_cmd(char *comand)
 {
 	char	**argv;
 	char	*path;
@@ -35,57 +35,73 @@ void	exec_cmd(char *comand)
 		perror("execve");
 		exit(EXIT_FAILURE);
 	}
-    free_arr(argv);
-    free(path);
+	free_arr(argv);
+	free(path);
+	return (0);
 }
 
-void	filein(char *filename, char *comand, int fd[2])
+int	filein(char *output_file, char *comand, int pipe_fd[2])
 {
-	int	fd_open;
+	int	fd;
 
-	fd_open = open(filename, O_WRONLY, 0777);
-	if (fd_open == -1)
+	close(pipe_fd[0]);
+	fd = open(output_file, O_WRONLY, 0644);
+	if (fd == -1)
 	{
 		perror("open");
 		exit(EXIT_FAILURE);
 	}
-    dup2(fd[0], STDIN_FILENO);
-    close(fd[0]);
-    dup2(fd_open, STDOUT_FILENO);
-    close(fd_open);
+	dup2(pipe_fd[1], STDOUT_FILENO);
+	dup2(fd, STDIN_FILENO);
+	close(pipe_fd[1]);
+	close(fd);
 	exec_cmd(comand);
+	return (0);
 }
 
-void    fileout(char *filename, char *comand, int fd[2])
+int	fileout(char *input_file, char *comand, int pipe_fd[2])
 {
-    int fd_open;
+	int	fd;
 
-    fd_open = open(filename, O_TRUNC | O_CREAT | O_RDWR, 0777);
-    if (fd_open == -1)
-    {
-        perror("open");
-        exit(EXIT_FAILURE);
-    }
-    dup2(fd[1], STDOUT_FILENO);
-    close(fd[1]);
-    dup2(fd_open, STDIN_FILENO);
-    close(fd_open);
-    exec_cmd(comand);
+	close(pipe_fd[1]);
+	fd = open(input_file, O_RDWR | O_CREAT | O_TRUNC, 0777);
+	if (fd == -1)
+	{
+		perror("open");
+		exit(EXIT_FAILURE);
+	}
+	dup2(fd, STDOUT_FILENO);
+	dup2(pipe_fd[0], STDIN_FILENO);
+	close(pipe_fd[0]);
+	close(fd);
+	exec_cmd(comand);
+	return (0);
 }
 
 int	main(int argc, char *argv[])
 {
-    int fd[2];
+	int	fd[2];
+	int	pid1;
+	int	pid2;
 
-    if (pipe(fd) == -1)
-    {
-        perror("pipe");
-        exit(EXIT_FAILURE);
-    }    
-	if (argc >= 3)
+	if (pipe(fd) == -1)
 	{
-		filein(argv[1], argv[2], fd);
-        fileout(argv[4], argv[3], fd);
+		perror("pipe");
+		return (EXIT_FAILURE);
 	}
+	if (argc != 5)
+		return (ft_putstr_fd(PARAM_ERR, 2));
+	pid1 = fork();
+	if (pid1 == 0)
+		filein(argv[1], argv[2], fd);
+	pid2 = fork();
+	if (pid2 < 0 || pid1 < 0)
+		return (ft_putstr_fd(FORK_ERR, 2));
+	if (pid2 == 0)
+		fileout(argv[4], argv[3], fd);
+	close(fd[0]);
+	close(fd[1]);
+	waitpid(pid1, NULL, 0);
+	waitpid(pid2, NULL, 0);
 	return (0);
 }

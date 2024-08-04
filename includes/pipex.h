@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 14:08:56 by jquicuma          #+#    #+#             */
-/*   Updated: 2024/08/03 14:41:52 by jquicuma         ###   ########.fr       */
+/*   Updated: 2024/08/04 01:38:41 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,21 @@
 # define PIPEX_H
 
 # include <fcntl.h>
-# include <unistd.h>
 # include <stdlib.h>
+# include <unistd.h>
 # include <wait.h>
-//Temporary include 
-# include <stdio.h>
 
-size_t  ft_strlen(const char *str);
-char    **ft_split(const char *s, char c);
-char    *ft_strjoin(const char *s1, const char *s2);
+# ifndef STD_ERR
+#  define STD_ERR
+
+#  define PARAM_ERR "execute: <file1> <cmd1> <cmd2> <file2>\n"
+#  define FORK_ERR "fork: fail executing fork\n"
+
+# endif
+
+size_t	ft_strlen(const char *str);
+char	**ft_split(const char *s, char c);
+char	*ft_strjoin(const char *s1, const char *s2);
+int		ft_putstr_fd(char *str, int fd);
 
 #endif
