@@ -1,23 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/03 14:40:20 by jquicuma          #+#    #+#             */
-/*   Updated: 2024/08/05 11:31:15 by jquicuma         ###   ########.fr       */
+/*   Created: 2024/07/30 14:01:18 by jquicuma          #+#    #+#             */
+/*   Updated: 2024/08/05 10:44:11 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include "../includes/pipex.h"
+#include "libft.h"
 
-size_t	ft_strlen(const char *str)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	size_t	i;
+	unsigned char	*ptr;
+	size_t			i;
 
+	ptr = (unsigned char *)s;
 	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}*/
+	while (i < n)
+		ptr[i++] = (unsigned char)c;
+	return (s);
+}
+/*
+int	main(void)
+{
+	char	*str;
+
+	str = malloc(7);
+	ft_memset(str, 'X', 6);
+	str[6] = '\0';
+	printf("%s\n", str);
+	return (0);
+}
+*/

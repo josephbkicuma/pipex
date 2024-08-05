@@ -6,7 +6,7 @@
 #    By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/03 14:32:35 by jquicuma          #+#    #+#              #
-#    Updated: 2024/08/04 06:28:30 by jquicuma         ###   ########.fr        #
+#    Updated: 2024/08/05 11:59:17 by jquicuma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ MV = mv *.o $(OBJ)
 all:	$(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) ./src/pipex.c -L./libft/ ./libft/libft.a -o $(NAME) 
 
 $(OBJS): $(SRCS)
 	$(CC) $(CFLAGS) -c $(SRCS)

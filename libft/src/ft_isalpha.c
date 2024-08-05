@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/03 14:40:20 by jquicuma          #+#    #+#             */
-/*   Updated: 2024/08/05 11:31:15 by jquicuma         ###   ########.fr       */
+/*   Created: 2024/07/30 07:36:29 by jquicuma          #+#    #+#             */
+/*   Updated: 2024/08/05 10:44:39 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include "../includes/pipex.h"
+#include "libft.h"
 
-size_t	ft_strlen(const char *str)
+int	ft_isalpha(int c)
 {
-	size_t	i;
+	if ((c >= 'a' && c <= 'z')
+		|| (c >= 'A' && c <= 'Z'))
+		return (c);
+	return (0);
+}
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}*/
+/*
+int	main()
+{
+	if (ft_isalpha('Z'))
+		printf("Alphabeto");
+	else
+		printf("NOPE!");
+	return (0);
+}
+*/

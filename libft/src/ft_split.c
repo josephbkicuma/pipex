@@ -5,70 +5,83 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/03 14:08:56 by jquicuma          #+#    #+#             */
-/*   Updated: 2024/08/05 11:30:58 by jquicuma         ###   ########.fr       */
+/*   Created: 2024/07/30 23:47:51 by jquicuma          #+#    #+#             */
+/*   Updated: 2024/08/05 10:40:51 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include "../includes/pipex.h"
+#include "libft.h"
 
-size_t	count_words(const char *s, char c)
+static int	ft_count_word_len(char const *str, char c)
 {
-	size_t	count;
-
-	count = 0;
-	while (*s)
-	{
-		while (*s == c)
-			s++;
-		if (*s && *s != c)
-		{
-			count++;
-			while (*s && *s != c)
-				s++;
-		}
-	}
-	return (count);
-}
-
-size_t	word_len(const char *s, char c)
-{
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (s[i] != c && s[i])
+	while (str[i] && str[i] != c)
 		i++;
 	return (i);
 }
 
+static int	ft_count_word(char const *s, char c)
+{
+	size_t	i;
+	int		count;
+
+	i = 0;
+	count = 0;
+	while (s && s[i])
+	{
+		if (s[i] != c)
+		{
+			count++;
+			while (s[i] != c && s[i])
+				i++;
+		}
+		else
+			i++;
+	}
+	return (count);
+}
+
+static char	**ft_free(char **strs, int i)
+{
+	while (i > 0)
+	{
+		free(strs[i]);
+		i--;
+	}
+	free(strs);
+	return (NULL);
+}
+
 char	**ft_split(char const *s, char c)
 {
-	char	**p;
-	size_t	i;
-	size_t	j;
-	size_t	k;
+	int		i;
+	int		word_len;
+	char	**strs;
 
-	p = malloc(sizeof(char *) * (count_words(s, c) + 1));
-	if (!p)
-		return (NULL);
-	j = 0;
+	strs = (char **)malloc(sizeof(char *) * (ft_count_word(s, c) + 1));
+	if (!strs || !s)
+		return (ft_free(strs, 0));
 	i = 0;
-	while (s[i])
+	while (*s)
 	{
-		k = 0;
-		while (s[i] == c)
+		word_len = 0;
+		while (*s == c && *s)
+			s++;
+		word_len = ft_count_word_len(s, c);
+		if (word_len)
+		{
+			strs[i] = ft_substr(s, 0, word_len);
+			if (!strs[i])
+				return (ft_free(strs, i));
 			i++;
-		p[j] = malloc(sizeof(char) * (word_len(&s[i], c) + 1));
-		if (!p[j])
-			return (NULL);
-		while (s[i] && s[i] != c)
-			p[j][k++] = s[i++];
-		p[j][k] = '\0';
-		j++;
+		}
+		s += word_len;
 	}
-	p[j] = NULL;
-	return (p);
-}*/
+	strs[i] = 0;
+	return (strs);
+}
 
 /*
 int	main(int ac, char **av)

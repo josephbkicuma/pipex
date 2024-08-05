@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/03 14:40:20 by jquicuma          #+#    #+#             */
-/*   Updated: 2024/08/05 11:31:15 by jquicuma         ###   ########.fr       */
+/*   Created: 2024/07/30 15:29:18 by jquicuma          #+#    #+#             */
+/*   Updated: 2024/08/05 10:40:51 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include "../includes/pipex.h"
+#include "libft.h"
 
-size_t	ft_strlen(const char *str)
+char	*ft_strchr(char *str, int c)
 {
 	size_t	i;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}*/
+	i = -1;
+	if (!str)
+		return (NULL);
+	while (str[++i])
+		if (str[i] == (char)c)
+			return (&str[i]);
+	if (str[i] == (char)c)
+		return (&str[i]);
+	return (NULL);
+}

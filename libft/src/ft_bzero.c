@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/03 14:40:20 by jquicuma          #+#    #+#             */
-/*   Updated: 2024/08/05 11:31:15 by jquicuma         ###   ########.fr       */
+/*   Created: 2024/07/30 14:08:09 by jquicuma          #+#    #+#             */
+/*   Updated: 2024/08/05 10:40:38 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include "../includes/pipex.h"
+#include "libft.h"
 
-size_t	ft_strlen(const char *str)
+void	*ft_bzero(void *s, size_t n)
 {
-	size_t	i;
+	ft_memset(s, '\0', n);
+	return (s);
+}
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}*/
+/*
+int	main()
+{
+	char	*str;
+
+	str = malloc(8);
+	ft_memset(str, 'A', 7);
+	printf("%s\n", str);
+	ft_bzero(str, 7);
+	printf("Zero: %s\n", str);
+	return (0);
+}
+*/

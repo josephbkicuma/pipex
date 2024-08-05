@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/03 14:40:20 by jquicuma          #+#    #+#             */
-/*   Updated: 2024/08/05 11:31:15 by jquicuma         ###   ########.fr       */
+/*   Created: 2024/07/30 14:26:49 by jquicuma          #+#    #+#             */
+/*   Updated: 2024/08/05 10:43:54 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include "../includes/pipex.h"
+#include "libft.h"
 
-size_t	ft_strlen(const char *str)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t	i;
+	unsigned char	*d;
+	unsigned char	*s;
+	size_t			i;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}*/
+	d = (unsigned char *)dest;
+	s = (unsigned char *)src;
+	if (d > s)
+		while (n--)
+			d[n] = s[n];
+	else
+	{
+		i = 0;
+		while (i < n)
+		{
+			d[i] = s[i];
+			i++;
+		}
+	}
+	return (dest);
+}

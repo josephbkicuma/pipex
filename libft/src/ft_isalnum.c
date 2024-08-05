@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/03 14:40:20 by jquicuma          #+#    #+#             */
-/*   Updated: 2024/08/05 11:31:15 by jquicuma         ###   ########.fr       */
+/*   Created: 2024/07/30 07:46:23 by jquicuma          #+#    #+#             */
+/*   Updated: 2024/08/05 10:40:39 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include "../includes/pipex.h"
+#include "libft.h"
 
-size_t	ft_strlen(const char *str)
+int	ft_isalnum(int c)
 {
-	size_t	i;
+	if (ft_isalpha(c) || ft_isdigit(c))
+		return (1);
+	return (0);
+}
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}*/
+/*
+int	main()
+{
+	if (ft_isalnum('d'))
+		return (printf("TRUE"));
+	return (0);
+}
+*/

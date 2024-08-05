@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/03 14:40:20 by jquicuma          #+#    #+#             */
-/*   Updated: 2024/08/05 11:31:15 by jquicuma         ###   ########.fr       */
+/*   Created: 2024/07/30 08:04:31 by jquicuma          #+#    #+#             */
+/*   Updated: 2024/08/05 10:40:51 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include "../includes/pipex.h"
+#include "libft.h"
 
-size_t	ft_strlen(const char *str)
+int	ft_tolower(int c)
 {
-	size_t	i;
+	if (c >= 'A' && c <= 'Z')
+		return (c + 32);
+	return (c);
+}
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}*/
+/*
+int	main()
+{
+	printf("%c\n", ft_tolower('d'));
+}
+*/

@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/03 14:08:56 by jquicuma          #+#    #+#             */
-/*   Updated: 2024/08/05 11:31:08 by jquicuma         ###   ########.fr       */
+/*   Created: 2024/07/30 17:08:33 by jquicuma          #+#    #+#             */
+/*   Updated: 2024/08/05 10:40:38 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include "../includes/pipex.h"
+#include "libft.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+void	*ft_calloc(size_t count, size_t size)
 {
-	char	*joined;
-	char	*ret;
+	void	*result;
 
-	joined = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!joined)
+	if (size != 0 && count > (size_t) - 1 / size)
 		return (NULL);
-	if (!s1 || !s2)
+	result = malloc(count * size);
+	if (!result)
 		return (NULL);
-	ret = joined;
-	while (*s1)
-		*joined++ = *s1++;
-	while (*s2)
-		*joined++ = *s2++;
-	*joined = '\0';
-	return (ret);
-}*/
+	ft_bzero(result, count * size);
+	return (result);
+}
+/*
+#include "libft.h"
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*result;
+
+	result = malloc(count * size);
+	if (result == NULL)
+		return (NULL);
+	ft_bzero(result, count * size);
+	return (result);
+}
+*/

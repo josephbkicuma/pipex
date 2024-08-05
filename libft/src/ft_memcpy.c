@@ -1,23 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/03 14:40:20 by jquicuma          #+#    #+#             */
-/*   Updated: 2024/08/05 11:31:15 by jquicuma         ###   ########.fr       */
+/*   Created: 2024/07/30 14:13:42 by jquicuma          #+#    #+#             */
+/*   Updated: 2024/08/05 10:40:51 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include "../includes/pipex.h"
+#include "libft.h"
 
-size_t	ft_strlen(const char *str)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t	i;
 
+	if (dest == NULL && src == NULL)
+		return (NULL);
 	i = 0;
-	while (str[i])
+	while (i < n)
+	{
+		*(char *)(dest + i) = *(char *)(src + i);
 		i++;
-	return (i);
-}*/
+	}
+	return (dest);
+}
+
+/*
+int	main()
+{
+	char	*str;
+
+	str = malloc(1);
+	memcpy(str, "Joseph Kicuma", 0);
+	printf("%s\n", str);
+	return (0);
+	
+}
+*/

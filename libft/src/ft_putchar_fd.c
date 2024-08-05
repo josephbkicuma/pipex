@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jquicuma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/03 14:40:20 by jquicuma          #+#    #+#             */
-/*   Updated: 2024/08/05 11:31:15 by jquicuma         ###   ########.fr       */
+/*   Created: 2024/07/31 11:34:20 by jquicuma          #+#    #+#             */
+/*   Updated: 2024/07/31 11:44:36 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include "../includes/pipex.h"
+#include "libft.h"
 
-size_t	ft_strlen(const char *str)
+void	ft_putchar_fd(char c, int fd)
 {
-	size_t	i;
+	write(fd, &c, 1);
+}
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}*/
+/*
+int	main()
+{
+	int	fd;
+
+	fd = open("file", O_RDWR);
+	if (fd == -1)
+		return (printf("Erro ao abrir\n"));
+	ft_putchar_fd('a', fd);
+	return (0);
+}
+*/

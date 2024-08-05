@@ -1,23 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/03 14:40:20 by jquicuma          #+#    #+#             */
-/*   Updated: 2024/08/05 11:31:15 by jquicuma         ###   ########.fr       */
+/*   Created: 2024/07/30 16:35:38 by jquicuma          #+#    #+#             */
+/*   Updated: 2024/08/05 10:40:36 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include "../includes/pipex.h"
+#include "libft.h"
 
-size_t	ft_strlen(const char *str)
+int	ft_atoi(const char *str)
 {
-	size_t	i;
+	int	result;
+	int	signal;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}*/
+	result = 0;
+	signal = 1;
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '-' || *str == '+')
+		if (*str++ == '-')
+			signal = -1;
+	while (*str >= '0' && *str <= '9')
+		result = (result * 10) + (*str++ - '0');
+	return (result * signal);
+}
+
+/*
+int	main()
+{
+	printf("%d\n", ft_atoi("            -1235"));
+}
+*/

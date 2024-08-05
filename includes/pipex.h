@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 14:08:56 by jquicuma          #+#    #+#             */
-/*   Updated: 2024/08/04 03:02:59 by jquicuma         ###   ########.fr       */
+/*   Updated: 2024/08/05 11:57:41 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,10 @@
 
 # endif
 
-size_t	ft_strlen(const char *str);
+# include "../libft/src/libft.h"
+/*size_t	ft_strlen(const char *str);
 char	**ft_split(const char *s, char c);
 char	*ft_strjoin(const char *s1, const char *s2);
-int		ft_putstr_fd(char *str, int fd);
+int		ft_putstr_fd(char *str, int fd);*/
 
 #endif

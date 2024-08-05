@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/03 14:40:20 by jquicuma          #+#    #+#             */
-/*   Updated: 2024/08/05 11:31:15 by jquicuma         ###   ########.fr       */
+/*   Created: 2024/07/30 15:53:00 by jquicuma          #+#    #+#             */
+/*   Updated: 2024/08/05 10:45:14 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include "../includes/pipex.h"
+#include "libft.h"
 
-size_t	ft_strlen(const char *str)
+void	*ft_memchr(void *s, int c, size_t n)
 {
-	size_t	i;
+	size_t			i;
+	unsigned char	*ptr;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}*/
+	i = -1;
+	ptr = (unsigned char *)s;
+	while (++i < n)
+		if (ptr[i] == (unsigned char)c)
+			return ((void *)&ptr[i]);
+	return (NULL);
+}
+
+/*
+int	main(void)
+{
+	char	str[] = "Joseph Kicuma";
+
+	printf("%s\n", (char *)memchr(str, 'K', 6));
+}
+*/
